@@ -22,9 +22,10 @@ function loadEnv() {
 }
 loadEnv();
 
+
 // Database configuration
 $host = $_ENV['DB_HOST'] ?? 'localhost';
-$port = $_ENV['DB_PORT'] ?? '3306';
+$port = $_ENV['DB_PORT'] ?? '8080';
 $dbname = $_ENV['DB_NAME'] ?? 'railway';
 $username = $_ENV['DB_USER'] ?? 'root';
 $password = $_ENV['DB_PASS'] ?? '';
