@@ -248,6 +248,17 @@ if (preg_match('/^\/nilai\/(\d+)$/', $path, $matches)) {
     }
 }
 
+try {
+    $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Database connected successfully\n"; // untuk debugging
+} catch(PDOException $e) {
+    error_log("Database connection failed: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(['error' => 'Database connection failed']);
+    exit();
+}
+
 // 404 - Route not found
 sendResponse([
     'success' => false,
